@@ -1,6 +1,9 @@
-from langchain_openai.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
 
-model = ChatOpenAI(model="gpt-3.5-turbo")
+# Configure the local LM Studio base URL and dummy API key
+model = ChatOpenAI(
+    openai_api_base="http://localhost:1234/v1"
+)
 
 response = model.invoke("The sky is")
 print(response.content)
