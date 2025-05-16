@@ -1,9 +1,11 @@
-from langchain_openai import ChatOpenAI
+from langchain_openai.chat_models import ChatOpenAI
 
-# Configure the local LM Studio base URL and dummy API key
+# Set up your local LM Studio server details
 model = ChatOpenAI(
-    openai_api_base="http://localhost:1234/v1"  # type: ignore
+    model="llama-4-scout-17b-16e-instruct",  # or whatever model name you loaded in LM Studio
+    base_url="http://localhost:1234/v1",  # default LM Studio OpenAI-compatible endpoint
+    api_key="lm-studio"  # dummy key, required by the client but not validated by LM Studio
 )
 
-response = model.invoke("The sky is")
+response = model.invoke("Name all of the LLMs and their providers.")
 print(response.content)
